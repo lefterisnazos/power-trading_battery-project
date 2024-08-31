@@ -1,0 +1,48 @@
+for the production of XBID:
+
+what happens if program stops, we cant to pickle all the necessary information somehow,
+and reinitialize the process with the current state of the battery, the encompasses the future buy&sells in the xbid market
+So...
+
+variables that we want to pickle/save. We can create an object with the below variables.
+
+        self.allocation = []
+        self.allocation_profit, self.trading_profit, self.current_settling_profit, self.total_current_profit = 0, [0], [], 0
+        self.allocation_cost = 0
+        self.true_old_bid, self.true_old_ask = {}, {}
+        self.allocation_history, self.actions_history = [], {}
+        self.total_settled_profit = None
+        self.total_projected_profit = None
+         +++
+        self.position (the whole position object)
+        self.soc_history
+
+update: just pickle the whole object, and we are settled
+
+-----------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
+
+FOR XBID_AUTOMATION_RUNNER:
+
+* 4:30PM CET add new_schedule for the next day.
+*  - remove old_schedule when the first xbid_instance of the new schedule starts
+   - the new_schedule becomes simultaneously -> old schedule
+
+Repeat the above process:
+ (* we have an old schedule. at 4:30, we get a new a new schedule.
+ * after some time we throw the old. the new becomes old
+ * and after some time we take a new_schedule again)
+
+* Exception to lookout for:
+  For the scheduling, we might have a last sell at 12pm cet eg. So in that instance we wont know the end_time of that
+  xbid interval, cause we wont have for some time the new_schedule. What we can do is put the end time till midnight,
+  and when we get the new_schedule, update the specific xbid_runner
+
+        If we want to adjust the end time of a currently running XBID instance:
+            * change self.end_time to the new timestamp
+            * populate self.allocation list with needed zeros at end of list
+            * populate self.position.position and self.position.position_type dicts with zeros for the new added keys
+            * populate self.true_old_bid & self.true old, with the current new ask and bid prices
+
+-----------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
