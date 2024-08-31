@@ -17,7 +17,7 @@ A project focused on battery allocation to different auction and continuous mark
 
 ### Auction Markets
 
-- **`auction_15.py` & `fcr_vs_da.py`**  
+- **`auction_15_production.py` & `fcr_vs_da_production.py`**  
   Responsible for the daily allocation of the battery in the auction markets.
 
 - **`production_auction_markets.py`**  
