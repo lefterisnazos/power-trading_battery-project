@@ -1,6 +1,6 @@
 # Power Trading Battery based Project
 
-A project focused on optimizing battery allocation across different auction and continuous markets. This includes the continuous trading of the battery in the market using a solution based on convex optimization. Due to various live data, package, and database dependencies, the files are not currently runnable. Core related files are located in the 'battery_simulator' file
+A project focused on optimizing battery allocation across different auction and continuous markets. This includes the continuous trading of the battery in the market using a solution based on convex optimization. As far as the day-ahead auction markets are concerned, an optimal daily schedule is produced, allocating between Frequency reserve & Day ahead markets. Due to various live data, package, and database dependencies, the files are not currently runnable. Core related files are located in the 'battery_simulator' file
 
 ## Project Structure
 
